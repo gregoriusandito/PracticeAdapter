@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.insiteprojectid.practiceadapter.MenuUtama">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student List"
+        android:id="@+id/studentList"
+        android:layout_margin="0dp"
+        android:layout_weight="0"
+        android:background="@color/merahMenuUtama"
+        android:layout_gravity="left" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Teacher List"
+        android:id="@+id/teacherList"
+        android:layout_weight="0"
+        android:background="@color/hijauMenuUtama"
+        android:layout_gravity="left" />
+</LinearLayout>
