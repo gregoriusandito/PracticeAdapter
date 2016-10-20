@@ -54,15 +54,15 @@ public class EditStudentActivity extends AppCompatActivity {
         fabDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //close activity
-                finish();
+                //release the krakens (the krakens will crawl ur data and put it to the bucket of darkness (ArrayList), lol)
+                saveEditedData();
             }
         });
         fabCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //release the krakens (the krakens will crawl ur data and put it to the bucket of darkness (ArrayList), lol)
-                saveEditedData();
+                //close activity
+                finish();
             }
         });
 

@@ -38,16 +38,15 @@ public class AddStudentActivity extends AppCompatActivity {
         fabDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //close activity
-                finish();
+                //release the krakens for saving new data
+                saveNewData();
             }
         });
         fabCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //release the krakens for saving new data
-                saveNewData();
-            }
+                //close activity
+                finish();            }
         });
 
     }
