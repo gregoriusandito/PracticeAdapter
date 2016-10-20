@@ -1,67 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/EditStyle"
-            android:text="No. "/>
-        <TextView
-            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditStyle"
+                android:text="No. "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditStyle"
+                android:text="Noreg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditStyle"
+                android:text="Nama"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditStyle"
+                android:text="Email"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditStyle"
+                android:text="Phone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/EditStyle"
-            android:text="Noreg"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EditStyle"
-            android:text="Nama"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EditStyle"
-            android:text="Email"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EditStyle"
-            android:text="Phone"/>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <EditText
+                style="@style/EditStyle"
+                android:id="@+id/new_id"/>
+            <EditText
+                style="@style/EditStyle"
+                android:id="@+id/new_noreg"/>
+
+            <EditText
+                style="@style/EditStyle"
+                android:id="@+id/new_nama"/>
+
+            <EditText
+                style="@style/EditStyle"
+                android:id="@+id/new_email"/>
+
+            <EditText
+                style="@style/EditStyle"
+                android:id="@+id/new_phone"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabDone"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
-        <EditText
-            style="@style/EditStyle"
-            android:id="@+id/new_id"/>
-        <EditText
-            style="@style/EditStyle"
-            android:id="@+id/new_noreg"/>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_done_black_24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        />
 
-        <EditText
-            style="@style/EditStyle"
-            android:id="@+id/new_nama"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_clear_black_24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/fabDone"
+        android:layout_toStartOf="@+id/fabDone"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
-        <EditText
-            style="@style/EditStyle"
-            android:id="@+id/new_email"/>
+</RelativeLayout>
 
-        <EditText
-            style="@style/EditStyle"
-            android:id="@+id/new_phone"/>
-
-    </LinearLayout>
-
-</LinearLayout>

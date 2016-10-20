@@ -29,9 +29,7 @@ public class StudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-//        customUsersAdapter = new CustomUsersAdapter(this, new ArrayList<Student>());
         lv = (ListView)findViewById(R.id.listView);
-//        lv.setAdapter(customUsersAdapter);
         emptyTextView = (TextView)findViewById(R.id.emptyView);
         lv.setEmptyView(emptyTextView);
         staticStudent = StaticStudent.getInstance();

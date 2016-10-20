@@ -15,9 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentActivity" />
+        <activity
+            android:name=".StudentActivity"
+            android:label="@string/student_list_title"/>
         <activity android:name=".TeacherActivity" />
-        <activity android:name=".AddStudentActivity" />
+        <activity
+            android:name=".AddStudentActivity"
+            android:label="@string/add_activity_title"
+            />
         <activity
             android:name=".EditStudentActivity"
             android:label="@string/title_activity_edit_student"
