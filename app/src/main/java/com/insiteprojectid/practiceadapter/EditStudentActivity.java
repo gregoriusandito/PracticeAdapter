@@ -1,6 +1,7 @@
 package com.insiteprojectid.practiceadapter;
 
 import android.os.Bundle;
+import android.os.Parcel;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class EditStudentActivity extends AppCompatActivity {
     private EditText noregText;
     private EditText phoneText;
     private EditText mailText;
-    private Student student;
+    public Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,7 @@ public class EditStudentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.deleteItem:
-                //get current id
+                //i'm sorry but this part still get any
                 int id = student.getId();
                 StaticStudent data = StaticStudent.getInstance();
                 data.remove(id);
