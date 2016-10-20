@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/EditStyle"
-            android:text="NIM"/>
+            android:text="Noreg"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,22 +45,22 @@
         >
         <EditText
             style="@style/EditStyle"
-            android:id="@+id/edit_id"/>
+            android:id="@+id/new_id"/>
         <EditText
             style="@style/EditStyle"
-            android:id="@+id/edit_nim"/>
+            android:id="@+id/new_noreg"/>
 
         <EditText
             style="@style/EditStyle"
-            android:id="@+id/edit_nama"/>
+            android:id="@+id/new_nama"/>
 
         <EditText
             style="@style/EditStyle"
-            android:id="@+id/edit_email"/>
+            android:id="@+id/new_email"/>
 
         <EditText
             style="@style/EditStyle"
-            android:id="@+id/edit_phone"/>
+            android:id="@+id/new_phone"/>
 
     </LinearLayout>
 

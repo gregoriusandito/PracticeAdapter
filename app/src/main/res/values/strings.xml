@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AdapterPlay</string>
+    <string name="title_activity_edit_student">Edit Student Data</string>
 </resources>

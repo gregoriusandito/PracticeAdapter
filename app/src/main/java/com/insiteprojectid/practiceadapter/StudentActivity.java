@@ -12,9 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.insiteprojectid.practiceadapter.adapter.CustomUsersAdapter;
+import com.insiteprojectid.practiceadapter.user.StaticStudent;
 import com.insiteprojectid.practiceadapter.user.Student;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class StudentActivity extends AppCompatActivity {
@@ -22,19 +23,19 @@ public class StudentActivity extends AppCompatActivity {
     private ListView lv;
     private CustomUsersAdapter customUsersAdapter;
     private TextView emptyTextView;
+    private StaticStudent staticStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+//        customUsersAdapter = new CustomUsersAdapter(this, new ArrayList<Student>());
         lv = (ListView)findViewById(R.id.listView);
-//        ArrayList<Student> students = populateStudentDummies();
-//        CustomUsersAdapter adapter = new CustomUsersAdapter(this, students);
-        CustomUsersAdapter adapter = new CustomUsersAdapter(this, new ArrayList<Student>());
-        lv = (ListView)findViewById(R.id.listView);
-        lv.setAdapter(adapter);
+//        lv.setAdapter(customUsersAdapter);
         emptyTextView = (TextView)findViewById(R.id.emptyView);
         lv.setEmptyView(emptyTextView);
+        staticStudent = StaticStudent.getInstance();
+
         FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fabButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,17 +48,35 @@ public class StudentActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Student student =
+                Intent intent = new Intent(getApplicationContext(), EditStudentActivity.class);
+                Student student = staticStudent.get(position);
+                intent.putExtra("StudentList", student);
+                startActivity(intent);
             }
         });
     }
 
-    private ArrayList<Student> populateStudentDummies() {
+    private void populateStudentDummies() {
         ArrayList<Student> studentList = new ArrayList<>();
         studentList.add(new Student(1, "3135136188", "TRI FEBRIANA SIAMI", "tri.febriana@unj.ac.id", "021577888"));
         studentList.add(new Student(2, "3135136192", "UMMU KULTSUM", "ummu.kultsum@unj.ac.id", "021577888"));
         studentList.add(new Student(3, "3135136215", "ANDREAN OKTAVIANUS H.S.", "andrean.ohs@unj.ac.id", "021577888"));
-        return studentList;
+        staticStudent.AddStudents(studentList);
+        customUsersAdapter = new CustomUsersAdapter(this,staticStudent.getList());
+        lv.setAdapter(customUsersAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        //overriding method to handle list
+        super.onResume();
+        if(staticStudent.count()==0) {
+            customUsersAdapter = new CustomUsersAdapter(this, new ArrayList<Student>());
+            emptyTextView.setText("No Student Found");
+        } else{
+            customUsersAdapter = new CustomUsersAdapter(this, staticStudent.getList());
+        }
+        lv.setAdapter(customUsersAdapter);
     }
 
     @Override
@@ -72,15 +91,12 @@ public class StudentActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.createDummy:
-                ArrayList<Student> students = populateStudentDummies();
-                CustomUsersAdapter adapter = new CustomUsersAdapter(this, students);
-                lv = (ListView)findViewById(R.id.listView);
-                lv.setAdapter(adapter);
+                populateStudentDummies();
                 return true;
             case R.id.clearList:
-                CustomUsersAdapter clearAdapter = new CustomUsersAdapter(this, new ArrayList<Student>());
-                lv = (ListView)findViewById(R.id.listView);
-                lv.setAdapter(clearAdapter);
+                StaticStudent.getInstance().clearList();
+                customUsersAdapter = new CustomUsersAdapter(this, new ArrayList<Student>());
+                lv.setAdapter(customUsersAdapter);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

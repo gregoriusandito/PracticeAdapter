@@ -1,7 +1,5 @@
 package com.insiteprojectid.practiceadapter.user;
 
-import com.insiteprojectid.practiceadapter.CustomUsersAdapter;
-
 import java.util.ArrayList;
 
 /**
@@ -16,6 +14,7 @@ public class StaticStudent {
     }
 
     public static void setStudentList(ArrayList<Student> studentList) {
+        //unused method to apply accumulation in list
         StaticStudent.studentList = studentList;
     }
 
