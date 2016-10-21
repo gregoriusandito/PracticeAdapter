@@ -59,6 +59,8 @@ public class StudentActivity extends AppCompatActivity {
         studentList.add(new Student(1, "3135136188", "TRI FEBRIANA SIAMI", "tri.febriana@unj.ac.id", "021577888"));
         studentList.add(new Student(2, "3135136192", "UMMU KULTSUM", "ummu.kultsum@unj.ac.id", "021577888"));
         studentList.add(new Student(3, "3135136215", "ANDREAN OKTAVIANUS H.S.", "andrean.ohs@unj.ac.id", "021577888"));
+//        staticStudent.setStudentList(studentList);
+//        customUsersAdapter = new CustomUsersAdapter(this,staticStudent.getStudentList());
         staticStudent.AddStudents(studentList);
         customUsersAdapter = new CustomUsersAdapter(this,staticStudent.getList());
         lv.setAdapter(customUsersAdapter);
@@ -72,6 +74,7 @@ public class StudentActivity extends AppCompatActivity {
             customUsersAdapter = new CustomUsersAdapter(this, new ArrayList<Student>());
             emptyTextView.setText("No Student Found");
         } else{
+//            customUsersAdapter = new CustomUsersAdapter(this, staticStudent.getStudentList());
             customUsersAdapter = new CustomUsersAdapter(this, staticStudent.getList());
         }
         lv.setAdapter(customUsersAdapter);

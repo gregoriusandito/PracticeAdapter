@@ -25,7 +25,7 @@ public class EditStudentActivity extends AppCompatActivity {
     private EditText noregText;
     private EditText phoneText;
     private EditText mailText;
-    public Student student;
+    private Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class EditStudentActivity extends AppCompatActivity {
         fabDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //release the krakens (the krakens will crawl ur data and put it to the bucket of darkness (ArrayList), lol)
+                //release the krakens
                 saveEditedData();
             }
         });
@@ -95,7 +95,11 @@ public class EditStudentActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.deleteItem:
                 //i'm sorry but this part still get any
-                int id = student.getId();
+//                Student studentParcel = new Student(Parcel.obtain());
+//                int id = studentParcel.getId();
+//                int id = student.getId();
+                Student object = getIntent().getParcelableExtra("StudentList");
+                int id = object.getId();
                 StaticStudent data = StaticStudent.getInstance();
                 data.remove(id);
                 finish();
