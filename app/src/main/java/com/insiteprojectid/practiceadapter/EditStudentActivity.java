@@ -95,7 +95,9 @@ public class EditStudentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.deleteItem:
-                int id = student.getId();
+//                int id = student.getId();
+                Student object = getIntent().getParcelableExtra("StudentList");
+                int id = object.getId();
                 staticStudent.studentList.remove(id);
                 //call resetIncrementID when deleting data
                 resetIncrementId(id);
