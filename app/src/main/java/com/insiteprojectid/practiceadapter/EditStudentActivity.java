@@ -27,6 +27,8 @@ public class EditStudentActivity extends AppCompatActivity {
     private EditText mailText;
     private Student student;
 
+    private StaticStudent staticStudent = new StaticStudent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +78,7 @@ public class EditStudentActivity extends AppCompatActivity {
         String phone = phoneText.getText().toString();
         String mail = mailText.getText().toString();
         student = new Student(id, noreg, name, mail, phone);
-        StaticStudent staticStudent = StaticStudent.getInstance();
-        staticStudent.set(id, student);
+        staticStudent.studentList.set(id, student);
         Toast success = Toast.makeText(getApplicationContext(), "Edit Success", Toast.LENGTH_SHORT);
         success.show();
         finish();
@@ -86,7 +87,7 @@ public class EditStudentActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_edit,menu);
+        inflater.inflate(R.menu.menu_edit, menu);
         return true;
     }
 
@@ -94,17 +95,21 @@ public class EditStudentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.deleteItem:
-                //i'm sorry but this part still get any
-//                Student studentParcel = new Student(Parcel.obtain());
-//                int id = studentParcel.getId();
-//                int id = student.getId();
-                Student object = getIntent().getParcelableExtra("StudentList");
-                int id = object.getId();
-                StaticStudent data = StaticStudent.getInstance();
-                data.remove(id);
+                int id = student.getId();
+                staticStudent.studentList.remove(id);
+                //call resetIncrementID when deleting data
+                resetIncrementId(id);
                 finish();
                 return true;
         }
         return false;
     }
+
+
+    public void resetIncrementId(int i){
+        for (int a = i; a < staticStudent.studentList.size(); a++) {
+            staticStudent.studentList.get(a).setId(a);
+        }
+    }
+
 }

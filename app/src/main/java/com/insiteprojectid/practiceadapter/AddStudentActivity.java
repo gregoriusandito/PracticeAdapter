@@ -20,6 +20,8 @@ public class AddStudentActivity extends AppCompatActivity {
     private EditText mailText;
     private Student student;
 
+    private StaticStudent staticStudent = new StaticStudent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,8 @@ public class AddStudentActivity extends AppCompatActivity {
         noregText = (EditText) findViewById(R.id.new_noreg);
         phoneText = (EditText) findViewById(R.id.new_phone);
         mailText = (EditText) findViewById(R.id.new_email);
+
+        idText.setEnabled(false);
 
         FloatingActionButton fabDone = (FloatingActionButton) findViewById(R.id.fabDone);
         FloatingActionButton fabCancel = (FloatingActionButton) findViewById(R.id.fabCancel);
@@ -52,17 +56,22 @@ public class AddStudentActivity extends AppCompatActivity {
     }
 
     protected void saveNewData(){
-        int id = Integer.parseInt(idText.getText().toString());
+        int id = getNextId();
         String noreg = noregText.getText().toString();
         String name = nameText.getText().toString();
         String phone = phoneText.getText().toString();
         String mail = mailText.getText().toString();
         student = new Student(id, noreg, name, mail, phone);
-        StaticStudent staticStudent = StaticStudent.getInstance();
-        staticStudent.addStudent(student);
+        staticStudent.studentList.add(student);
         Toast success = Toast.makeText(getApplicationContext(), "New Student Data Added", Toast.LENGTH_SHORT);
         success.show();
         finish();
     }
+
+    public int getNextId(){
+        return StaticStudent.studentList.size();
+    };
+
+
 
 }
